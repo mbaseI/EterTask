@@ -38,8 +38,8 @@ export default function FilterBox({
               return (
                 <div className={styles.item} key={item}>
                   <input
-                    checked={selected?.includes(item)}
-                    value={selected?.includes(item)}
+                    defaultChecked={selected?.includes(item)}
+                    defaultValue={selected?.includes(item)}
                     name={type === 'radio' ? 'select' : item}
                     onClick={() => onSelect(item)}
                     type={type}

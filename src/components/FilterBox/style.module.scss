@@ -4,7 +4,7 @@
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  max-height: 180px;
+
   .searchInput {
     width: 100%;
     border: none;
@@ -17,7 +17,7 @@
   }
   .itemWrapper {
     margin-top: 15px;
-    max-height: 145px;
+    max-height: 150px;
     overflow: hidden;
     overflow-y: scroll;
     &::-webkit-scrollbar {

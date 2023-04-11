@@ -35,8 +35,7 @@ const masterReducer = (state = initialState, action) =>
           let item = draft.basket.find((y) => y.id === action.values.id);
           item.count++;
         } else {
-          action.values.count = 1;
-          draft.basket.push(action.values);
+          draft.basket.push({ ...action.values, count: 1 });
         }
         break;
       case INCREASE_ITEM: {

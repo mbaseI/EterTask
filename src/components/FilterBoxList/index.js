@@ -31,7 +31,7 @@ export default function FilterBoxList() {
   const sortData = [
     'Old to new',
     'New to old',
-    'Price hight to low',
+    'Price high to low',
     'Price low to high',
   ];
 

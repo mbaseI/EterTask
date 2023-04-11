@@ -45,10 +45,10 @@ function Home() {
         return results.sort(
           (a, b) => toTimestamp(b.createdAt) - toTimestamp(a.createdAt),
         );
-      case 'Price hight to low':
-        return results.sort((a, b) => a.price - b.price);
-      case 'Price low to high':
+      case 'Price high to low':
         return results.sort((a, b) => b.price - a.price);
+      case 'Price low to high':
+        return results.sort((a, b) => a.price - b.price);
       default:
         return results;
     }
