@@ -1,6 +1,6 @@
 # Proje Hakkında
 
-SearchBar ile filtreleme kısmını bütün ürünler içinde arama yapılacak yazıldığı için filtreleri sıfırlayacak şekilde yaptım. Umarım yanlış anlamamışımdır
+SearchBar ile filtreleme kısmında bütün ürünler içinde arama yapılacak yazıldığı için aranılan ürün seçilen brand ve modeller içerisinde yok ise filtreleri sıfırlayacak şekilde yaptım. Umarım yanlış anlamamışımdır
 
 ## Available Scripts
 
