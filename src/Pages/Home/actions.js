@@ -4,6 +4,7 @@ import {
   SET_BRANDS_FILTER,
   SET_MODELS_FILTER,
   SET_SORT_FILTER,
+  RESET_FILTERS,
 } from './constants';
 
 export function getProducts() {
@@ -30,6 +31,12 @@ export function setModelsFilter(values) {
   return {
     type: SET_MODELS_FILTER,
     values,
+  };
+}
+
+export function resetFilters() {
+  return {
+    type: RESET_FILTERS,
   };
 }
 

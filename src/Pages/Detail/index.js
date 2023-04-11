@@ -10,15 +10,13 @@ import EButton from '../../components/EButton';
 import PBox from '../../components/PBox';
 import CountBox from '../../components/CountBox';
 import { setBasket } from '../Master/actions';
-import { makeSelectMaster } from '../Master/selector';
 
 export default function Detail() {
   const dispatch = useDispatch();
 
   const detailData = useSelector(makeSelectDetail());
-  const masterData = useSelector(makeSelectMaster());
   const productDetail = detailData?.productDetail;
-
+  const { image, name, price, description } = productDetail;
   const { id } = useParams();
 
   useEffect(() => {
@@ -33,18 +31,18 @@ export default function Detail() {
           <div className={styles.detail}>
             <Row>
               <Col md={7}>
-                <Image className={styles.image} src={productDetail?.image} />
+                <Image className={styles.image} src={image} />
               </Col>
               <Col md={5}>
                 <div>
-                  <div className={styles.brand}>{productDetail?.name}</div>
-                  <div className={styles.price}>{productDetail?.price}₺</div>
+                  <div className={styles.brand}>{name}</div>
+                  <div className={styles.price}>{price}₺</div>
                   <EButton
                     onClick={() => dispatch(setBasket(productDetail))}
                     text={'Add to Cart'}
                   />
                   <div className={styles.description}>
-                    {productDetail?.description?.slice(0, 495)}
+                    {description?.slice(0, 495)}
                   </div>
                 </div>
               </Col>
@@ -53,7 +51,7 @@ export default function Detail() {
         </Col>
         <Col xxl={2} md={3}>
           <PBox />
-          <CountBox data={masterData?.basket} />
+          <CountBox />
         </Col>
       </Row>
     </Layout>

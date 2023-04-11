@@ -4,12 +4,16 @@ import styles from './style.module.scss';
 import { Person, Briefcase } from 'react-bootstrap-icons';
 import { setSearchText } from '../../Pages/Master/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeSelectMaster } from '../../Pages/Master/selector';
+import {
+  makeSelectBasketPrice,
+  makeSelectMaster,
+} from '../../Pages/Master/selector';
+import { resetFilters } from '../../Pages/Home/actions';
 
 export default function Header() {
   const dispatch = useDispatch();
   const masterData = useSelector(makeSelectMaster());
-
+  const basketPrice = useSelector(makeSelectBasketPrice);
   return (
     <div className={styles.header}>
       <Container>
@@ -23,15 +27,17 @@ export default function Header() {
             <div className={styles.searchBar}>
               <input
                 placeholder="Search"
-                onChange={(e) => dispatch(setSearchText(e.target.value))}
+                onChange={(e) => {
+                  dispatch(setSearchText(e.target.value));
+                  dispatch(resetFilters());
+                }}
               />
             </div>
           </Col>
           <Col md={2}>
             <div className={styles.userInformation}>
               <div className={styles.basket}>
-                <Briefcase size={20} fill="white" />{' '}
-                <span>{masterData?.basketPrice}₺</span>
+                <Briefcase size={20} fill="white" /> <span>{basketPrice}₺</span>
               </div>
               <div className={styles.user}>
                 <Person size={20} fill="white" /> <span>Kerem</span>

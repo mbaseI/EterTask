@@ -1,50 +1,38 @@
 import React from 'react';
 import WBox from '../WBox';
 import styles from './style.module.scss';
+import { makeSelectMaster } from '../../Pages/Master/selector';
+import { useDispatch, useSelector } from 'react-redux';
+import { decreaseItem, increaseItem } from '../../Pages/Master/actions';
 
-export default function CountBox({ data }) {
-  function calculate() {
-    const nameCounts = new Map();
-    const totalPrices = new Map();
-
-    data.forEach((item) => {
-      const name = item.name;
-      const price = parseFloat(item.price);
-
-      nameCounts.set(name, (nameCounts.get(name) || 0) + 1);
-
-      if (!totalPrices.has(name)) {
-        totalPrices.set(name, price);
-      } else {
-        totalPrices.set(name, totalPrices.get(name) + price);
-      }
-    });
-
-    const result = [];
-    nameCounts.forEach((count, name) => {
-      const price = totalPrices.get(name);
-      result.push({ name, count, price });
-    });
-
-    return result;
-  }
-
-  const usableData = calculate();
+export default function CountBox() {
+  const masterData = useSelector(makeSelectMaster());
+  const dispatch = useDispatch();
 
   return (
     <WBox headText={'Cart'}>
-      {usableData.length > 0 ? (
-        usableData.map((item) => {
+      {masterData.basket?.length > 0 ? (
+        masterData.basket?.map((item) => {
           return (
             <div key={item.name} className={styles.item}>
               <div className={styles.information}>
                 <div className={styles.name}>{item.name}</div>
-                <div className={styles.price}>{item.price}₺</div>
+                <div className={styles.price}>{item.price * item.count}₺</div>
               </div>
               <div className={styles.counter}>
-                <div className={styles.decrease}>-</div>
+                <div
+                  onClick={() => dispatch(decreaseItem(item.id))}
+                  className={styles.decrease}
+                >
+                  -
+                </div>
                 <div className={styles.count}>{item.count}</div>
-                <div className={styles.increase}>+</div>
+                <div
+                  onClick={() => dispatch(increaseItem(item.id))}
+                  className={styles.increase}
+                >
+                  +
+                </div>
               </div>
             </div>
           );

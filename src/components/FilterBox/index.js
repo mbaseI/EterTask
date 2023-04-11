@@ -13,11 +13,9 @@ export default function FilterBox({
 }) {
   const [searchText, setSearchText] = useState('');
 
-  console.log(data);
-
   const searchedData = () => {
-    return data.filter((item) =>
-      item.toLowerCase().includes(searchText?.toLowerCase()),
+    return data?.filter((item) =>
+      item?.toLowerCase().includes(searchText?.toLowerCase()),
     );
   };
 
@@ -25,31 +23,34 @@ export default function FilterBox({
     <WBox headText={title}>
       <div className={styles.filterBox}>
         <Form>
-          {isSearchable && (
-            <input
-              onChange={(e) => setSearchText(e.target.value)}
-              className={styles.searchInput}
-              placeholder="Search"
-            />
-          )}
-
-          {searchedData()?.map((item) => {
-            return (
-              <div className={styles.item} key={item}>
-                <input
-                  value={item}
-                  name={type === 'radio' ? 'select' : item}
-                  onClick={() => onSelect(item)}
-                  type={type}
-                  className="form-check-input"
-                  id={item}
-                />
-                <label className={styles.label} id={item}>
-                  {item}
-                </label>
-              </div>
-            );
-          })}
+          <div className={styles.flex}>
+            {isSearchable && (
+              <input
+                onChange={(e) => setSearchText(e.target.value)}
+                className={styles.searchInput}
+                placeholder="Search"
+              />
+            )}
+          </div>
+          <div className={styles.itemWrapper}>
+            {searchedData()?.map((item) => {
+              return (
+                <div className={styles.item} key={item}>
+                  <input
+                    value={item}
+                    name={type === 'radio' ? 'select' : item}
+                    onClick={() => onSelect(item)}
+                    type={type}
+                    className={`form-check-input ${styles.selectInput}`}
+                    id={item}
+                  />
+                  <label className={styles.label} id={item}>
+                    {item}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
         </Form>
       </div>
     </WBox>

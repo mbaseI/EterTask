@@ -1,7 +1,8 @@
 import produce from 'immer';
 import {
+  DECREASE_ITEM,
+  INCREASE_ITEM,
   SET_BASKET,
-  SET_BASKET_PRICE,
   SET_LOADER,
   SET_SEARCH_TEXT,
 } from './constants';
@@ -16,7 +17,6 @@ const persistConfig = {
 export const initialState = {
   loaderStatus: false,
   searchText: '',
-  basketPrice: '',
   basket: [],
 };
 
@@ -29,11 +29,29 @@ const masterReducer = (state = initialState, action) =>
       case SET_SEARCH_TEXT:
         draft.searchText = action.values;
         break;
-      case SET_BASKET_PRICE:
-        draft.basketPrice = action.price;
-        break;
+
       case SET_BASKET:
-        draft.basket.push(action.values);
+        if (draft.basket.some((x) => x.id === action.values.id)) {
+          let item = draft.basket.find((y) => y.id === action.values.id);
+          item.count++;
+        } else {
+          action.values.count = 1;
+          draft.basket.push(action.values);
+        }
+        break;
+      case INCREASE_ITEM: {
+        let index = draft.basket.findIndex((y) => y.id === action.id);
+        if (index !== -1) draft.basket[index].count++;
+        break;
+      }
+      case DECREASE_ITEM:
+        {
+          let index = draft.basket.findIndex((y) => y.id === action.id);
+          if (index !== -1) {
+            draft.basket[index].count--;
+            if (draft.basket[index].count < 1) draft.basket.splice(index, 1);
+          }
+        }
         break;
       default:
         return draft;

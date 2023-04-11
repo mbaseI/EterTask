@@ -89,7 +89,7 @@ function Home() {
       <Layout>
         <Row>
           <Col xxl={2} xl={2} md={3}>
-            <FilterBoxList data={searchedProducts} />
+            <FilterBoxList data={homeData?.searchedProducts} />
           </Col>
           <Col xxl={8} xl={8} md={6}>
             <Row>
@@ -132,7 +132,7 @@ function Home() {
           </Col>
           <Col xxl={2} xl={2} md={3}>
             <PBox />
-            <CountBox data={masterData?.basket} />
+            <CountBox />
           </Col>
         </Row>
       </Layout>

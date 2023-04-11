@@ -1,5 +1,6 @@
 import produce from 'immer';
 import {
+  RESET_FILTERS,
   SET_BRANDS_FILTER,
   SET_MODELS_FILTER,
   SET_SEARCHED_PRODUCTS,
@@ -39,6 +40,10 @@ const homeReducer = (state = initialState, action) =>
         } else {
           draft.selectedModels.splice(modelsIndex, 1);
         }
+        break;
+      case RESET_FILTERS:
+        draft.selectedBrands = [];
+        draft.selectedModels = [];
         break;
       default:
         break;

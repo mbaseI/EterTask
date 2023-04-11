@@ -13,6 +13,7 @@
   }
   .body {
     padding: 0;
+
     .text {
       min-height: 48px;
       text-align: start;
@@ -21,6 +22,7 @@
     .price {
       text-align: start;
       margin: 15px 0;
+      font-weight: 400;
       color: $eBlue;
     }
     .button {

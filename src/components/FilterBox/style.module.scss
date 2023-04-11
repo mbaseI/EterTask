@@ -3,32 +3,47 @@
 .filterBox {
   font-size: 14px;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
   max-height: 180px;
-  overflow: hidden;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: $eGrey;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: $eGrey;
-  }
   .searchInput {
-    margin-bottom: 15px;
+    width: 100%;
+    border: none;
+    padding: 6px;
+    background-color: $eSoftGrey;
+    font-weight: 500;
+    &:focus-visible {
+      outline-color: $eBlue;
+    }
   }
-  .item {
-    margin-bottom: 8px;
-    margin-left: 2px;
-    display: flex;
-    align-items: flex-start;
-    .label {
-      margin-left: 5px;
+  .itemWrapper {
+    margin-top: 15px;
+    max-height: 145px;
+    overflow: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $eGrey;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: $eGrey;
+    }
+
+    .item {
+      margin-bottom: 8px;
+      margin-left: 2.5px;
+      display: flex;
+      align-items: flex-start;
+      .label {
+        margin-left: 5px;
+      }
+      .selectInput {
+        border-color: $eBlue;
+        border-width: 2px;
+      }
     }
   }
 }

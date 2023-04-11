@@ -17,7 +17,7 @@ export default function ECard({ image, price, model, brand, name, id }) {
     name: name,
     id: id,
   };
-
+  console.log('eCard', product);
   return (
     <Card className={styles.card}>
       <Card.Img

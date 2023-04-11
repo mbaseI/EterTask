@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import FilterBox from '../FilterBox';
 import { List } from 'react-bootstrap-icons';
 import { onlyUnique } from '../../utils/utils';
@@ -10,12 +10,20 @@ import {
   setSortFilter,
 } from '../../Pages/Home/actions';
 import { Button, Offcanvas } from 'react-bootstrap';
+import { makeSelectHome } from '../../Pages/Home/selector';
+import { makeSelectMaster } from '../../Pages/Master/selector';
 
-export default function FilterBoxList({ data }) {
+export default function FilterBoxList() {
   const dispatch = useDispatch();
-
-  const [newData, setNewData] = useState({});
   const [show, setShow] = useState(false);
+
+  const homeData = useSelector(makeSelectHome());
+  const masterData = useSelector(makeSelectMaster());
+
+  const products = homeData?.searchedProducts;
+
+  const selectedBrands = homeData.selectedBrands;
+  const searchText = masterData.searchText;
 
   const sortData = [
     'Old to new',
@@ -24,66 +32,29 @@ export default function FilterBoxList({ data }) {
     'Price low to high',
   ];
 
-  const generateData = (data) => {
-    let generatedData = {};
-    data.forEach((item) => {
-      if (
-        // eslint-disable-next-line no-prototype-builtins
-        generatedData.hasOwnProperty(item.brand) &&
-        Array.isArray(generatedData[item.brand])
-      ) {
-        generatedData[item.brand].push(item.model);
-        return;
-      }
-      generatedData[item.brand] = [item.model];
-    });
-    return generatedData;
+  const getBrands = () => {
+    return products
+      .filter((item) =>
+        item?.name.toLowerCase().includes(searchText?.toLowerCase()),
+      )
+      .map((x) => x.brand)
+      .filter(onlyUnique)
+      .sort();
   };
 
-  const renderBrands = (data) => {
-    const brands = Object.keys(data);
-    return (
-      <FilterBox
-        onSelect={(item) => dispatch(setBrandsFilter(item))}
-        title={'Brands'}
-        data={brands}
-      />
-    );
-  };
-
-  const renderModels = (data, test) => {
-    const models = Object.entries(data)
-      .map((item) => {
-        return item[1];
+  const getModels = () => {
+    return products
+      .filter((item) =>
+        item?.name.toLowerCase().includes(searchText?.toLowerCase()),
+      )
+      .filter((ns) => {
+        if (selectedBrands.length === 0) return true;
+        return selectedBrands?.includes(ns.brand);
       })
-      .flat()
-      .filter(onlyUnique);
-
-    return (
-      <FilterBox
-        onSelect={(item) => dispatch(setModelsFilter(item))}
-        title={'Models'}
-        data={models}
-      />
-    );
+      .map((x) => x.model)
+      .filter(onlyUnique)
+      .sort();
   };
-
-  const renderSortBy = (data) => {
-    return (
-      <FilterBox
-        title={'Sort by'}
-        isSearchable={false}
-        data={data}
-        type={'radio'}
-        onSelect={(item) => dispatch(setSortFilter(item))}
-      />
-    );
-  };
-
-  console.log(data);
-  useEffect(() => {
-    setNewData(generateData(data));
-  }, [data]);
 
   return (
     <div>
@@ -101,9 +72,23 @@ export default function FilterBoxList({ data }) {
           <Offcanvas.Title>Filter</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body style={{ flexDirection: 'column' }}>
-          {renderSortBy(sortData)}
-          {renderBrands(newData)}
-          {renderModels(newData)}
+          <FilterBox
+            title={'Sort by'}
+            isSearchable={false}
+            data={sortData}
+            type={'radio'}
+            onSelect={(item) => dispatch(setSortFilter(item))}
+          />
+          <FilterBox
+            onSelect={(item) => dispatch(setBrandsFilter(item))}
+            title={'Brands'}
+            data={getBrands()}
+          />
+          <FilterBox
+            onSelect={(item) => dispatch(setModelsFilter(item))}
+            title={'Models'}
+            data={getModels()}
+          />
         </Offcanvas.Body>
       </Offcanvas>
     </div>
