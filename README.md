@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Proje Hakkında
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SearchBar ile filtreleme kısmını bütün ürünler içinde arama yapılacak yazıldığı için filtreleri sıfırlayacak şekilde yaptım. Umarım yanlış anlamamışımdır
 
 ## Available Scripts
 
