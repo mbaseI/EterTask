@@ -6,8 +6,8 @@ import {
   SET_LOADER,
   SET_SEARCH_TEXT,
 } from './constants';
-import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 
 const persistConfig = {
   key: 'Master',

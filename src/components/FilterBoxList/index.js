@@ -23,6 +23,9 @@ export default function FilterBoxList() {
   const products = homeData?.searchedProducts;
 
   const selectedBrands = homeData.selectedBrands;
+  const selectedModels = homeData.selectedModels;
+  const selectedSort = homeData.selectedSort;
+
   const searchText = masterData.searchText;
 
   const sortData = [
@@ -76,16 +79,19 @@ export default function FilterBoxList() {
             title={'Sort by'}
             isSearchable={false}
             data={sortData}
+            selected={selectedSort}
             type={'radio'}
             onSelect={(item) => dispatch(setSortFilter(item))}
           />
           <FilterBox
             onSelect={(item) => dispatch(setBrandsFilter(item))}
+            selected={selectedBrands}
             title={'Brands'}
             data={getBrands()}
           />
           <FilterBox
             onSelect={(item) => dispatch(setModelsFilter(item))}
+            selected={selectedModels}
             title={'Models'}
             data={getModels()}
           />

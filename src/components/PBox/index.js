@@ -3,12 +3,8 @@ import WBox from '../WBox';
 import styles from './style.module.scss';
 import EButton from '../EButton';
 import { useSelector } from 'react-redux';
-import {
-  makeSelectBasketPrice,
-  makeSelectMaster,
-} from '../../Pages/Master/selector';
+import { makeSelectBasketPrice } from '../../Pages/Master/selector';
 export default function PBox() {
-  const masterData = useSelector(makeSelectMaster());
   const basketPrice = useSelector(makeSelectBasketPrice);
   return (
     <WBox headText={'Checkout'}>

@@ -10,6 +10,7 @@ export default function FilterBox({
   isSearchable = true,
   type = 'checkbox',
   onSelect,
+  selected,
 }) {
   const [searchText, setSearchText] = useState('');
 
@@ -37,14 +38,15 @@ export default function FilterBox({
               return (
                 <div className={styles.item} key={item}>
                   <input
-                    value={item}
+                    checked={selected?.includes(item)}
+                    value={selected?.includes(item)}
                     name={type === 'radio' ? 'select' : item}
                     onClick={() => onSelect(item)}
                     type={type}
                     className={`form-check-input ${styles.selectInput}`}
                     id={item}
                   />
-                  <label className={styles.label} id={item}>
+                  <label htmlFor={item} className={styles.label} id={item}>
                     {item}
                   </label>
                 </div>

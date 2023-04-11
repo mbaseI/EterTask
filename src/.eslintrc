@@ -17,6 +17,7 @@
     "react/jsx-uses-vars": "warn",
     "react/jsx-uses-react": "warn",
     "no-unused-vars": "warn",
-    "no-console": "warn"
+    "no-console": "warn",
+    "testing-library/prefer-screen-queries": "off"
   }
 }

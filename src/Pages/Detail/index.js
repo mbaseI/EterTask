@@ -30,10 +30,10 @@ export default function Detail() {
         <Col xxl={10} md={9}>
           <div className={styles.detail}>
             <Row>
-              <Col md={7}>
+              <Col xxl={7} md={12}>
                 <Image className={styles.image} src={image} />
               </Col>
-              <Col md={5}>
+              <Col xxl={7} md={12}>
                 <div>
                   <div className={styles.brand}>{name}</div>
                   <div className={styles.price}>{price}₺</div>

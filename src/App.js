@@ -24,7 +24,6 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-          <ToastContainer limit={3} />
         </PersistGate>
       </Provider>
     </div>

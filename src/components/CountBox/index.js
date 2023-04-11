@@ -22,14 +22,14 @@ export default function CountBox() {
               <div className={styles.counter}>
                 <div
                   onClick={() => dispatch(decreaseItem(item.id))}
-                  className={styles.decrease}
+                  className={styles.countBtn}
                 >
                   -
                 </div>
                 <div className={styles.count}>{item.count}</div>
                 <div
                   onClick={() => dispatch(increaseItem(item.id))}
-                  className={styles.increase}
+                  className={styles.countBtn}
                 >
                   +
                 </div>

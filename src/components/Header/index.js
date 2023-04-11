@@ -4,15 +4,12 @@ import styles from './style.module.scss';
 import { Person, Briefcase } from 'react-bootstrap-icons';
 import { setSearchText } from '../../Pages/Master/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  makeSelectBasketPrice,
-  makeSelectMaster,
-} from '../../Pages/Master/selector';
+import { makeSelectBasketPrice } from '../../Pages/Master/selector';
 import { resetFilters } from '../../Pages/Home/actions';
 
 export default function Header() {
   const dispatch = useDispatch();
-  const masterData = useSelector(makeSelectMaster());
+
   const basketPrice = useSelector(makeSelectBasketPrice);
   return (
     <div className={styles.header}>

@@ -17,11 +17,12 @@ export default function ECard({ image, price, model, brand, name, id }) {
     name: name,
     id: id,
   };
-  console.log('eCard', product);
+
   return (
     <Card className={styles.card}>
       <Card.Img
-        onClick={() => navigate(`/detail/${id}`)}
+        alt={product.name}
+        onClick={() => navigate(`/detail/${product.id}`)}
         className={styles.image}
         variant="top"
         src={image}
