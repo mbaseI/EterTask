@@ -1,0 +1,46 @@
+@import '../../_variables.scss';
+
+.item {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .information {
+    div {
+      text-align: start;
+    }
+    .name {
+      font-size: 14px;
+    }
+    .price {
+      color: $eBlue;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+  .counter {
+    background-color: $eSoftGrey;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    max-height: 30px;
+    div {
+      min-width: 24px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .count {
+      height: 100%;
+      padding: 2px 8px;
+      background-color: $eBlue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      cursor: default;
+    }
+  }
+}

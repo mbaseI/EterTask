@@ -1,0 +1,24 @@
+.Pagination {
+  display: inline;
+  padding: 0 6px;
+  width: 24px;
+  height: 24px;
+  button {
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    color: #484848;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  span {
+    padding: 0 10px;
+  }
+}
+.isActive {
+  background-color: white !important;
+  border: 1px solid white;
+  box-shadow: 0px 0px 10px rgba(162, 170, 180, 0.25);
+  border-radius: 6px;
+  color: blue !important;
+}

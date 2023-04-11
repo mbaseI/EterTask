@@ -1,0 +1,23 @@
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  .previous {
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: #484848;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .next {
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: #484848;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+}

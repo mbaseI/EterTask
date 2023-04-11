@@ -1,0 +1,30 @@
+@import '../../_variables.scss';
+
+.card {
+  margin-bottom: 20px;
+  min-height: 310px;
+  padding: 10px;
+
+  .image {
+    min-height: 145px;
+    height: auto;
+    width: 100%;
+    cursor: pointer;
+  }
+  .body {
+    padding: 0;
+    .text {
+      min-height: 48px;
+      text-align: start;
+      font-weight: 500;
+    }
+    .price {
+      text-align: start;
+      margin: 15px 0;
+      color: $eBlue;
+    }
+    .button {
+      width: 100%;
+    }
+  }
+}

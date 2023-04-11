@@ -1,0 +1,62 @@
+@import '../../_variables.scss';
+
+.header {
+  background-color: $eBlue;
+  padding: 15px 0;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  span {
+    color: white;
+  }
+  .brand {
+    text-align: start;
+    @media screen and (max-width: 768px) {
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+  .searchBar {
+    display: flex;
+    justify-content: flex-start;
+    @media screen and (max-width: 768px) {
+      justify-content: center;
+    }
+    input {
+      padding: 0 10px;
+      width: 50%;
+    }
+  }
+  .userInformation {
+    display: flex;
+    justify-content: flex-end;
+    @media screen and (max-width: 768px) {
+      justify-content: space-between;
+    }
+    .basket {
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      svg {
+        margin-right: 5px;
+      }
+    }
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+}

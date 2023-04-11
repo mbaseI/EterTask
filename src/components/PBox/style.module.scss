@@ -1,0 +1,12 @@
+@import '../../_variables.scss';
+
+.priceBox {
+  .price {
+    margin-left: 4px;
+    color: $eBlue;
+    font-weight: bold;
+  }
+  button {
+    margin-top: 15px;
+  }
+}

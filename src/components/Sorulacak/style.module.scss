@@ -1,0 +1,13 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  label {
+    display: flex;
+    margin-bottom: 8px;
+    span {
+      margin-left: 4px;
+      font-size: 14px;
+      text-align: start;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.loader {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(2px);
+  .loaderContent {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($color: #cf6823, $alpha: 0.4);
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      backdrop-filter: blur(8px);
+      svg {
+        -webkit-animation: spin 2s linear infinite;
+        -moz-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+      @-moz-keyframes spin {
+        100% {
+          -moz-transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}
