@@ -37,7 +37,7 @@ export default function Header() {
                 <Briefcase size={20} fill="white" /> <span>{basketPrice}₺</span>
               </div>
               <div className={styles.user}>
-                <Person size={20} fill="white" /> <span>Kerem</span>
+                <Person size={20} fill="white" /> <span>Mustafa Basel</span>
               </div>
             </div>
           </Col>
