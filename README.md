@@ -1,7 +1,3 @@
-# Proje Hakkında
-
-SearchBar ile filtreleme kısmını bütün ürünler içinde arama yapılacak yazıldığı için aranılan ürün seçilen brand ve modeller içerisinde yok ise seçilen değerleri uncheck edicek şekilde yaptım. Umarım yanlış anlamamışımdır.
-
 ## Available Scripts
 
 In the project directory, you can run:
